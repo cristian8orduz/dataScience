@@ -1,9 +1,9 @@
 import random
 
 # Inicializar variables
-carta1 = " ___\n " + "|J  |\n"+"| ♦ |\n"+"|__J|\n"
-carta2 = " ___\n " + "|Q  |\n"+"| ♥ |\n"+"|__Q|\n"
-carta3 = " ___\n " + "|8  |\n"+"| ♣ |\n"+"|__8|\n"
+carta1 = " ___\n|J  |\n| ♦ |\n|__J|\n"
+carta2 = " ___\n|Q  |\n| ♥ |\n|__Q|\n"
+carta3 = " ___\n|8  |\n| ♣ |\n|__8|\n"
 cartas_lista=list(carta1,carta2,carta3)
 cartas_den=("Jota","Reina","Ocho")
 def main():
