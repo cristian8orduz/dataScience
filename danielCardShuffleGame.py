@@ -1,8 +1,8 @@
 import random
 from datetime import datetime
-cartas={"CARTA1": str(f' _\n|J  |\n| ♦ |\n|  J|\n'),
-        "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|  Q|\n'),
-        "CARTA3": str(f' _\n|8  |\n| ♣ |\n|  8|\n')}
+cartas={"CARTA1": str(f' ___\n|J  |\n| ♦ |\n|  J|\n___'),
+        "CARTA2": str(f' ___\n|Q  |\n| ♥ |\n|  Q|\n___'),
+        "CARTA3": str(f' ___\n|8  |\n| ♣ |\n|  8|\n___')}
 def main():
     file_path='/Users/macbook/Desktop/UNAL/2023-2/F de Programacion/FINAL/proyect.txt'
     # con global, se usan las variables declaradas arriba
@@ -39,9 +39,7 @@ def main():
                     #se reordenan las llaves de las cartas
                     keys = sorted(list(cartas_shuffle.keys()))
                     values = list(cartas_shuffle.values())
-                    # Rebuild the dictionary
                     cartas_shuffle = dict(zip(keys, values))
-                        #intercambios.append((carta_a, carta_b))
                     print(f"Intercambio {carta_a} con {carta_b}")
 
 
@@ -67,7 +65,7 @@ def main():
                     for line in file:
                         nombreAnt, puntosAnt,fechaAnt = line.strip().split('!')
                         if nombre == nombreAnt:
-                                if puntosAnt<puntos:
+                                if int(puntosAnt)<puntos:
                                         found = True
                                         updated_lines.append(f"{nombre}!{puntos}!{fecha}\n")
         
@@ -90,14 +88,11 @@ def main():
 
         elif opcion == "T":
                 i=1
-                try:
-                        with open(file_path, 'r') as file:
-                            for line in file:
+                with open(file_path, 'r') as file:
+                        for line in file:
                                 nombreBt, puntosBt,fechaBt = line.strip().split('!')
-                                print(f'{i}. {nombreBt}, {puntosBT} puntos. Mejor jugada el {fechaBt}')
+                                print(f'{i}. {nombreBt}, {puntosBt} puntos. Mejor jugada el {fechaBt}')
                                 i+=1
-                
-
         elif opcion == "S":
             print("Adiós.")
             break
