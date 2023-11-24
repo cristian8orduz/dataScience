@@ -19,11 +19,12 @@ cartas_shuffle = {key: cartas_shuffle[key] for key in key_list}
 
 #aqui se ordenan las llaves
 # Extract keys and values
-keys = list(cartas_suffle.keys()).sorted()
-values = list(cartas_suffle.values())
-
+keys = list(cartas_shuffle.keys()).sort()
+values = list(cartas_shuffle.values())
+print(keys)
+print(values)
 # Rebuild the dictionary
-cartas_shuffle = dict(zip(keys, values))
+#cartas_shuffle = dict(zip(keys, values))
 
 #intercambios.append((carta_a, carta_b))
 print(f"Intercambio {carta_a} con {carta_b}")
