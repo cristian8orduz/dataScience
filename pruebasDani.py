@@ -14,7 +14,7 @@ carta_a = random.choice(key_list)
 carta_b = random.choice(key_list)
 while carta_a == carta_b:                 
     carta_b = random.choice(key_list)
-key_list[carta_a], key_list[carta_b] = key_list[carta_b], key_list[carta_a]
+key_list[key_list.index(carta_a)], key_list[key_list.index(carta_b)] = key_list[key_list.index(carta_b)], key_list[key_list.index(carta_a)]
 cartas_shuffle = {key: cartas_shuffle[key] for key in key_list}
 #intercambios.append((carta_a, carta_b))
 print(f"Intercambio {carta_a} con {carta_b}")
