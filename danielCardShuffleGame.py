@@ -55,7 +55,6 @@ def main():
                 cartas_lista_final[index_a], cartas_lista_final[index_b] = carta_b2, carta_a2
                 #intercambios.append((carta_a, carta_b))
                 print(f"Intercambio {carta_a} con {carta_b}")
-                dibujar_cartas()
                 #print(cartas)
 
             # No es necesario, ya que se muestra en el ciclo de arriba
@@ -74,8 +73,7 @@ def main():
             else:
                 print("Lo siento, has perdido")
 
-            # mostrar cartas para verificar el resultado
-            dibujar_cartas()
+            print(cartas_lista_final)
             
         elif opcion == "T":
             print("En la tercera sustentación se va a ver reflejado.")
@@ -87,12 +85,6 @@ def main():
         else:
             print("Error.")
 
-def dibujar_cartas():
-    global cartas_letras, cartas_simbolos
-    print(" ___   ___   ___")
-    print("|" + cartas_letras[0] + "  | |" + cartas_letras[1] + "  | |" + cartas_letras[2] + "  |")
-    print("| " + cartas_simbolos[0] + " | | " + cartas_simbolos[1] + " | | " + cartas_simbolos[2] + " |")
-    print("|__" + cartas_letras[0] + "| |__" + cartas_letras[1] + "| |__" + cartas_letras[2] + "|")
 
 #if _name_ == "_main_":
 #    main()
