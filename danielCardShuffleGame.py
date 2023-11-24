@@ -1,14 +1,12 @@
 import random
-
-# Inicializar variables
-carta1 = " ___\n|J  |\n| ♦ |\n|__J|\n"
-carta2 = " ___\n|Q  |\n| ♥ |\n|__Q|\n"
-carta3 = " ___\n|8  |\n| ♣ |\n|__8|\n"
-cartas_lista=list(carta1,carta2,carta3)
-cartas_den=("Jota","Reina","Ocho")
+import datetime
+import json
+cartas={"CARTA1" : str(f' _\n|J  |\n| ♦ |\n|J|\n'),
+        "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|Q|\n'),
+        "CARTA3" : str(f' _\n|8  |\n| ♣ |\n|8|\n')}
 def main():
     # con global, se usan las variables declaradas arriba
-    global cartas_lista, cartas_den
+    global cartas
     nombre = None
     print("Adivina dónde está la Reina de Corazones")
     while True:        
@@ -18,63 +16,75 @@ def main():
             if nombre is None: 
               nombre = input("Por favor, indique su nombre: ")            
             
-            # unir listas temporalmente para hacer el shuffle en el mismo orden para letra y símbolo
-            lista_completa = list(zip(carta_lista, cartas_den))
-            random.shuffle(lista_completa)
-            cartas_lista_final, cartas_den_final = zip(*lista_completa)
-            # Convertir a listas nuevamente
-            cartas_lista_final = list(cartas_lista_final)
-            cartas_den_final = list(cartas_den_final)
-            
-            #print(cartas)
-            #print(cartas_letras)
-            #print(cartas_simbolos)
+            items = list(cartas.items())
+            random.shuffle(items)
+            # Reconstructing the dictionary with shuffled items
+            cartas_shuffle = dict(items)
             
             print(f"{nombre}, mantén tus ojos bien abiertos mientras las cartas se mueven")
             # Mostrar las cartas en su orden
-            dibujar_cartas()
+            print(cartas_shuffle)
             input("Presiona ENTER cuando estés listo(a)")
             
             num_intercambios = random.randint(2, 4)
             intercambios = []  
             for _ in range(num_intercambios):
-                carta_a1 = random.choice(cartas_den_final)
-                carta_b1 = random.choice(cartas_den_final)
-                while carta_a == carta_b:                 
-                    carta_b = random.choice(cartas_den_final)
-                index_a = cartas_den_final.index(carta_a)
-                index_b = cartas_den_final.index(carta_b)
-                carta_a2 = cartas_lista_final[index_a]
-                carta_b2 = cartas_lista_final[index_b]
-                print(carta_a1, carta_a2)
-                print(carta_b1, carta_b2)
-                
-                # intercambiar cartas
-                cartas_den_final[index_a], cartas_den_final[index_b] = carta_b1, carta_a1
-                # intercambiar letras y símbolos
-                cartas_lista_final[index_a], cartas_lista_final[index_b] = carta_b2, carta_a2
+                key_list=list(cartas_shuffle.keys())
+            carta_a = random.choice(key_list)
+            carta_b = random.choice(key_list)
+            while carta_a == carta_b:                 
+                carta_b = random.choice(key_list)
+            key_list[key_list.index(carta_a)], key_list[key_list.index(carta_b)] = key_list[key_list.index(carta_b)], key_list[key_list.index(carta_a)]
+            cartas_shuffle = {key: cartas_shuffle[key] for key in key_list}
+            #se reordenan las llaves de las cartas
+            keys = sorted(list(cartas_shuffle.keys()))
+            values = list(cartas_shuffle.values())
+            print(keys)
+            print(values)
+            # Rebuild the dictionary
+            cartas_shuffle = dict(zip(keys, values))
                 #intercambios.append((carta_a, carta_b))
-                print(f"Intercambio {carta_a} con {carta_b}")
-                #print(cartas)
+            print(f"Intercambio {carta_a} con {carta_b}")
 
-            # No es necesario, ya que se muestra en el ciclo de arriba
-            #random.shuffle(intercambios)
-            #for intercambio in intercambios:
-            #    carta_a, carta_b = intercambio
-            #    print(f"Intercambio {carta_a} con {carta_b}")
 
-            opciones = ["I", "M", "D"]
-            respuesta_correcta = int(cartas.index("carta del medio (M)"))
-            respuesta = input(f"¿En cuál de las cartas está la Reina de Corazones? [{', '.join(opciones)}]: ")
-            respuesta_index = opciones.index(respuesta)#colocarlo como un entero
-
-            if respuesta_index == respuesta_correcta:
+            opciones = ["CARTA1", "CARTA2", "CARTA3"]
+            reina = str(f' _\n|Q  |\n| ♥ |\n|Q|\n')
+            respuesta_correcta=None
+            for key, value in cartas_shuffle.items():
+                if value == reina:
+                    respuesta_correcta = key
+                    break
+            respuesta = input(f"¿En cuál de las cartas está la Reina de Corazones? [{', '.join(opciones)}]: ").upper()#duda
+            if respuesta == respuesta_correcta:
                 print("¡Felicidades! Has ganado")
             else:
                 print("Lo siento, has perdido")
-
-            print(cartas_lista_final)
+            ya=datetime.now()
+            fecha=ya.strftime('%d-%m-%Y a las %I:%M %p')]
+            record = [nombre, puntos, fecha]
+            file_path = ''#aqui va la direccion del JSON para ingresar
+            try:
+                with open(file_path, 'r') as file:
+                    tabla = json.load(file)
+            except (FileNotFoundError, json.JSONDecodeError):
+                tabla = []
+            record_exists = False
+            for existente in tabla:
+                if existente[0] == nombre:  # Name is at index 0
+                    record_exists = True
+                    if record[1] > existente[1]:  # Points are at index 1
+                        existente[1] = record[1]
+                        existente[2] = record[2]  # Update date and time
+                    break
+            if not record_exists:
+                records.append(record)
             
+            # Sort the list in descending order by points
+            tabla.sort(key=lambda x: x[1], reverse=True)
+            
+            # Write the updated data back to the file
+            with open(file_path, 'w') as file:
+                json.dump(tabla, file)
         elif opcion == "T":
             print("En la tercera sustentación se va a ver reflejado.")
 
