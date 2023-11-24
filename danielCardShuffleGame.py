@@ -24,7 +24,7 @@ def main():
             
             print(f"{nombre}, mantén tus ojos bien abiertos mientras las cartas se mueven")
             # Mostrar las cartas en su orden
-            print(cartas_shuffle["CARTA1"],cartas_shuffle["CARTA2"],cartas_shuffle["CARTA3'])
+            print(cartas_shuffle["CARTA1"],cartas_shuffle["CARTA2"],cartas_shuffle["CARTA3"])
             input("Presiona ENTER cuando estés listo(a)")
             
             num_intercambios = random.randint(5, 8)
@@ -91,11 +91,11 @@ def main():
         elif opcion == "T":
                 i=1
                 try:
-                with open(file_path, 'r') as file:
-                    for line in file:
-                        nombreBt, puntosBt,fechaBt = line.strip().split('!')
-                        print(f'{i}. {nombreBt}, {puntosBT} puntos. Mejor jugada el {fechaBt}')
-                        i+=1
+                        with open(file_path, 'r') as file:
+                            for line in file:
+                                nombreBt, puntosBt,fechaBt = line.strip().split('!')
+                                print(f'{i}. {nombreBt}, {puntosBT} puntos. Mejor jugada el {fechaBt}')
+                                i+=1
                 
 
         elif opcion == "S":
