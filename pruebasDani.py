@@ -1,7 +1,7 @@
 import random
-cartas={"Carta1" : str(f' _\n|J  |\n| ♦ |\n|J|\n'),
-"Carta2": str(f' _\n|Q  |\n| ♥ |\n|Q|\n'),
-"Carta3" : str(f' _\n|8  |\n| ♣ |\n|8|\n')
+cartas={"CARTA1" : str(f' _\n|J  |\n| ♦ |\n|J|\n'),
+"CARTA2": str(f' _\n|Q  |\n| ♥ |\n|Q|\n'),
+"CARTA3" : str(f' _\n|8  |\n| ♣ |\n|8|\n')
 }
 items = list(cartas.items())
 random.shuffle(items)
@@ -32,12 +32,12 @@ print(cartas_shuffle)
 
 opciones = ["CARTA1", "CARTA2", "CARTA3"]
 reina = str(f' _\n|Q  |\n| ♥ |\n|Q|\n')
-IndiceReina = None
 respuesta_correcta=None
 for key, value in cartas_shuffle.items():
     if value == reina:
         respuesta_correcta = key
     break
+print(respuesta_correcta)
 respuesta = input(f"¿En cuál de las cartas está la Reina de Corazones? [{', '.join(opciones)}]: ").upper()#duda
 print(respuesta)
 print(respuesta_correcta)
