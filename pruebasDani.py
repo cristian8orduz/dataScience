@@ -40,6 +40,7 @@ for key, value in cartas_shuffle.items():
     break
 respuesta = input(f"¿En cuál de las cartas está la Reina de Corazones? [{', '.join(opciones)}]: ").upper()#duda
 print(respuesta)
+print(respuesta_correcta)
 if respuesta == respuesta_correcta:
     print("¡Felicidades! Has ganado")
 else:
