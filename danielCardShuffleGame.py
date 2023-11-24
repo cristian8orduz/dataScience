@@ -12,7 +12,7 @@ def main():
     nombre = None
     print("Adivina dónde está la Reina de Corazones")
     while True:        
-        opcion = input("Seleccione jugar [J], tabla de posiciones [T], salir [S]:")
+        opcion = input("Seleccione jugar [J], tabla de posiciones [T], salir [S]:").upper()
 
         if opcion == "J":
             if nombre is None: 
