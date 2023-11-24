@@ -8,7 +8,7 @@ cartas_lista=list(carta1,carta2,carta3)
 cartas_den=("Jota","Reina","Ocho")
 def main():
     # con global, se usan las variables declaradas arriba
-    global cartasList
+    global cartas_lista, cartas_den
     nombre = None
     print("Adivina dónde está la Reina de Corazones")
     while True:        
