@@ -38,17 +38,21 @@ def main():
             num_intercambios = random.randint(2, 4)
             intercambios = []  
             for _ in range(num_intercambios):
-                carta_a = random.choice(cartas_den_final)
-                carta_b = random.choice(cartas_den_final)
+                carta_a1 = random.choice(cartas_den_final)
+                carta_b1 = random.choice(cartas_den_final
                 while carta_a == carta_b:                 
                     carta_b = random.choice(cartas_den_final)
                 index_a = cartas_den_final.index(carta_a)
                 index_b = cartas_den_final.index(carta_b)
+                carta_a2 = cartas_lista_final[index_a]
+                carta_b2 = cartas_lista_final[index_b]
+                print(carta_a1, carta_a2)
+                print(carta_b1, carta_b2)
                 
                 # intercambiar cartas
-                cartas_den_final[index_a], cartas[index_b] = carta_b, cartas[index_a]
+                cartas_den_final[index_a], cartas_den_final[index_b] = carta_b1, carta_a1
                 # intercambiar letras y símbolos
-                cartas_lista_final[index_a], cartas_lista_final[index_b] = cartas_lista_final[index_b], cartas_lista_final[index_a]
+                cartas_lista_final[index_a], cartas_lista_final[index_b] = carta_b2, carta_a2
                 #intercambios.append((carta_a, carta_b))
                 print(f"Intercambio {carta_a} con {carta_b}")
                 dibujar_cartas()
