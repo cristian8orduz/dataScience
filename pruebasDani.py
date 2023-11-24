@@ -19,7 +19,7 @@ cartas_shuffle = {key: cartas_shuffle[key] for key in key_list}
 
 #aqui se ordenan las llaves
 # Extract keys and values
-keys = list(cartas_shuffle.keys()).sort()
+keys = sorted(list(cartas_shuffle.keys()))
 values = list(cartas_shuffle.values())
 print(keys)
 print(values)
@@ -29,3 +29,17 @@ print(values)
 #intercambios.append((carta_a, carta_b))
 print(f"Intercambio {carta_a} con {carta_b}")
 print(cartas_shuffle)
+
+opciones = ["CARTA1", "CARTA2", "CARTA3"]
+reina = str(f' _\n|Q  |\n| ♥ |\n|Q|\n')
+IndiceReina = None
+for key, value in cartas_shuffle.items():
+    if value == reina:
+        respuesta_correcta = key
+    break
+respuesta = input(f"¿En cuál de las cartas está la Reina de Corazones? [{', '.join(opciones)}]: ").upper()#duda
+print(respuesta)
+if respuesta == respuesta_correcta:
+    print("¡Felicidades! Has ganado")
+else:
+    print("Lo siento, has perdido")
