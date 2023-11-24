@@ -40,8 +40,6 @@ def main():
                     #se reordenan las llaves de las cartas
                     keys = sorted(list(cartas_shuffle.keys()))
                     values = list(cartas_shuffle.values())
-                    print(keys)
-                    print(values)
                     # Rebuild the dictionary
                     cartas_shuffle = dict(zip(keys, values))
                         #intercambios.append((carta_a, carta_b))
@@ -49,8 +47,7 @@ def main():
 
 
             opciones = ["CARTA1", "CARTA2", "CARTA3"]
-            reina = str(f' _\n|Q  |\n| ♥ |\n|Q|\n')
-            respuesta_correcta=None
+            reina = str(f' _\n|Q  |\n| ♥ |\n|  Q|\n')
             for key, value in cartas_shuffle.items():
                 if value == reina:
                     respuesta_correcta = key
