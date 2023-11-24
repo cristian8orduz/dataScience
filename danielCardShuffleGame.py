@@ -5,6 +5,7 @@ cartas={"CARTA1": str(f' _\n|J  |\n| ♦ |\n|  J|\n'),
         "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|  Q|\n'),
         "CARTA3": str(f' _\n|8  |\n| ♣ |\n|  8|\n')}
 def main():
+    file_path='/Users/macbook/Desktop/UNAL/2023-2/F de Programacion/FINAL/proyect.txt'
     # con global, se usan las variables declaradas arriba
     global cartas
     nombre = None
@@ -59,7 +60,6 @@ def main():
                 print("Lo siento, has perdido")
             ya=datetime.now()
             fecha=ya.strftime('%d-%m-%Y a las %I:%M %p')
-            def read_and_update_or_append(file_path, new_name, new_number):
             found = False
             updated_lines = []
         
@@ -86,16 +86,16 @@ def main():
             except FileNotFoundError:
                 # Create the file and write the new record if file does not exist
                 with open(file_path, 'w') as file:
-                    file.write(f"{new_name}!{new_number}\n")
+                    file.write(f"{nombre}!{puntos}!{fecha}\n")
                 return False
 
         elif opcion == "T":
-                print("En la tercera sustentación se va a ver reflejado.")
-                with open(file_path, 'w') as file:
-                        tabla=json.load(file)
-                for existente in tabla:
+                try:
+                with open(file_path, 'r') as file:
+                    for line in file:
+                        nombreBt, puntosBt,fechaBt = line.strip().split('!')
                         i=1
-                        print(str(i)+", "+existente[0]+", "+existente[1]", puntos. Mejor ugada el "+existente[3])
+                        print(str(i)+", "+nombreBt+", "+puntsosBT+", puntos. Mejor jugada el "+fechaBt)
                         i+=1
                 
 
