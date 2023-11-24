@@ -39,7 +39,7 @@ def main():
             intercambios = []  
             for _ in range(num_intercambios):
                 carta_a1 = random.choice(cartas_den_final)
-                carta_b1 = random.choice(cartas_den_final
+                carta_b1 = random.choice(cartas_den_final)
                 while carta_a == carta_b:                 
                     carta_b = random.choice(cartas_den_final)
                 index_a = cartas_den_final.index(carta_a)
