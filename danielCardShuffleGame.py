@@ -63,30 +63,38 @@ def main():
                 print("Lo siento, has perdido")
             ya=datetime.now()
             fecha=ya.strftime('%d-%m-%Y a las %I:%M %p')
-            record = [nombre, puntos, fecha]
-            file_path = ''#aqui va la direccion del JSON para ingresar
+            def read_and_update_or_append(file_path, new_name, new_number):
+            found = False
+            updated_lines = []
+        
             try:
                 with open(file_path, 'r') as file:
-                    tabla = json.load(file)
-            except (FileNotFoundError, json.JSONDecodeError):
-                tabla = []
-            record_exists = False
-            for existente in tabla:
-                if existente[0] == nombre:  # Name is at index 0
-                    record_exists = True
-                    if record[1] > existente[1]:  # Points are at index 1
-                        existente[1] = record[1]
-                        existente[2] = record[2]  # Update date and time
-                    break
-            if not record_exists:
-                tabla.append(record)
-            
-            # Sort the list in descending order by points
-            tabla.sort(key=lambda x: x[1], reverse=True)
-            
-            # Write the updated data back to the file
-            with open(file_path, 'w') as file:
-                json.dump(tabla, file)
+                    for line in file:
+                        nombreAnt, puntosAnt,fechaAnt = line.strip().split('!')
+                        if nombre == nombreAnt:
+                            found = True
+                            # Update the number if the name matches
+                            updated_lines.append(f"{nombre}!{new_number}!{fecha}\n")
+                        else:
+                            updated_lines.append(line)
+        
+                # If found, rewrite the file with updated data
+                if found:
+                    with open(file_path, 'w') as file:
+                        file.writelines(updated_lines)
+                else:
+                    # If not found, append the new record
+                    with open(file_path, 'a') as file:
+                        file.write(f"{nombre}!{puntos}!{fecha}\n")
+        
+                return found
+        
+            except FileNotFoundError:
+                # Create the file and write the new record if file does not exist
+                with open(file_path, 'w') as file:
+                    file.write(f"{new_name}!{new_number}\n")
+                return False
+
         elif opcion == "T":
                 print("En la tercera sustentación se va a ver reflejado.")
                 with open(file_path, 'w') as file:
