@@ -94,6 +94,7 @@ def main():
                 for existente in tabla:
                         i=1
                         print(str(i)+", "+existente[0]+", "+existente[1]", puntos. Mejor ugada el "+existente[3])
+                        i+=1
                 
 
         elif opcion == "S":
