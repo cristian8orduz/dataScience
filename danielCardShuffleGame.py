@@ -90,7 +90,10 @@ def main():
         elif opcion == "T":
                 print("En la tercera sustentación se va a ver reflejado.")
                 with open(file_path, 'w') as file:
-                        for
+                        tabla=json.load(file)
+                for existente in tabla:
+                        i=1
+                        print(str(i)+", "+existente[0]+", "+existente[1]", puntos. Mejor ugada el "+existente[3])
                 
 
         elif opcion == "S":
