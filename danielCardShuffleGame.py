@@ -28,7 +28,6 @@ def main():
             input("Presiona ENTER cuando estés listo(a)")
             
             num_intercambios = random.randint(5, 8)
-            intercambios = []  
             for _ in range(num_intercambios):
                     key_list=list(cartas_shuffle.keys())
                     carta_a = random.choice(key_list)
@@ -69,11 +68,9 @@ def main():
                     for line in file:
                         nombreAnt, puntosAnt,fechaAnt = line.strip().split('!')
                         if nombre == nombreAnt:
-                            found = True
-                            # Update the number if the name matches
-                            updated_lines.append(f"{nombre}!{new_number}!{fecha}\n")
-                        else:
-                            updated_lines.append(line)
+                                if puntosAnt<puntos:
+                                        found = True
+                                        updated_lines.append(f"{nombre}!{puntos}!{fecha}\n")
         
                 # If found, rewrite the file with updated data
                 if found:
