@@ -94,7 +94,7 @@ def main():
                 with open(file_path, 'r') as file:
                     for line in file:
                         nombreBt, puntosBt,fechaBt = line.strip().split('!')
-                        print(f'{i}. {nombreBt}, {puntsosBT} puntos. Mejor jugada el {fechaBt}')
+                        print(f'{i}. {nombreBt}, {puntosBT} puntos. Mejor jugada el {fechaBt}')
                         i+=1
                 
 
