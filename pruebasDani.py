@@ -33,6 +33,7 @@ print(cartas_shuffle)
 opciones = ["CARTA1", "CARTA2", "CARTA3"]
 reina = str(f' _\n|Q  |\n| ♥ |\n|Q|\n')
 IndiceReina = None
+respuesta_correcta=None
 for key, value in cartas_shuffle.items():
     if value == reina:
         respuesta_correcta = key
