@@ -1,9 +1,9 @@
 import random
 import datetime
 import json
-cartas={"CARTA1" : str(f' _\n|J  |\n| ♦ |\n|J|\n'),
-        "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|Q|\n'),
-        "CARTA3" : str(f' _\n|8  |\n| ♣ |\n|8|\n')}
+cartas={"CARTA1": str(f' _\n|J  |\n| ♦ |\n|  J|  '),
+        "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|  Q|  '),
+        "CARTA3": str(f' _\n|8  |\n| ♣ |\n|  8|\n')}
 def main():
     # con global, se usan las variables declaradas arriba
     global cartas
@@ -24,7 +24,7 @@ def main():
             
             print(f"{nombre}, mantén tus ojos bien abiertos mientras las cartas se mueven")
             # Mostrar las cartas en su orden
-            print(cartas_shuffle[CARTA1],cartas_shuffle[CARTA2],cartas_shuffle[CARTA3])
+            print(cartas_shuffle["CARTA1"],cartas_shuffle["CARTA2"],cartas_shuffle["CARTA3'])
             input("Presiona ENTER cuando estés listo(a)")
             
             num_intercambios = random.randint(5, 8)
