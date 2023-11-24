@@ -1,6 +1,5 @@
 import random
-import datetime
-import json
+from datetime import datetime
 cartas={"CARTA1": str(f' _\n|J  |\n| ♦ |\n|  J|\n'),
         "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|  Q|\n'),
         "CARTA3": str(f' _\n|8  |\n| ♣ |\n|  8|\n')}
@@ -90,12 +89,12 @@ def main():
                 return False
 
         elif opcion == "T":
+                i=1
                 try:
                 with open(file_path, 'r') as file:
                     for line in file:
                         nombreBt, puntosBt,fechaBt = line.strip().split('!')
-                        i=1
-                        print(str(i)+", "+nombreBt+", "+puntsosBT+", puntos. Mejor jugada el "+fechaBt)
+                        print(f'{i}. {nombreBt}, {puntsosBT} puntos. Mejor jugada el {fechaBt}')
                         i+=1
                 
 
