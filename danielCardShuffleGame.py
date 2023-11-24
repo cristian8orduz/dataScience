@@ -1,8 +1,8 @@
 import random
 import datetime
 import json
-cartas={"CARTA1": str(f' _\n|J  |\n| ♦ |\n|  J|  '),
-        "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|  Q|  '),
+cartas={"CARTA1": str(f' _\n|J  |\n| ♦ |\n|  J|\n'),
+        "CARTA2": str(f' _\n|Q  |\n| ♥ |\n|  Q|\n'),
         "CARTA3": str(f' _\n|8  |\n| ♣ |\n|  8|\n')}
 def main():
     # con global, se usan las variables declaradas arriba
